@@ -30,7 +30,13 @@ def preprocess(dataset, size="small", max_doc_freq=0.9):
 
     print(terms)
 
-    return terms
+    terms_jsonl = [{"task": dataset, "input": t, "label": ""} for t in terms]
+
+    dist_path = f"./datasets/{dataset}/{size}_terms.jsonl" 
+
+    with open(dist_path, "w", encoding="utf-8") as f:
+        for obj in terms_jsonl:
+            f.write(json.dumps(obj) + "\n")
 
 
 def preprocess_documents(documents):
@@ -68,8 +74,7 @@ def extract_terms(processed_docs, max_doc_freq=0.9):
     terms = vectorizer.get_feature_names_out()
     return terms
 
-
-
+    
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
