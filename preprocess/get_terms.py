@@ -8,6 +8,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 import json
 
 nltk.download("punkt")
+nltk.download('punkt_tab')
 nltk.download("stopwords")
 nltk.download("wordnet")
 
