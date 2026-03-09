@@ -10,4 +10,4 @@ tqdm
 rich
 h5py==3.8.0
 openai
-nltk==3.9.3
+spacy

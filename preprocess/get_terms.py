@@ -1,16 +1,8 @@
 import argparse
 import re
-import nltk
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize
+import spacy
 from sklearn.feature_extraction.text import CountVectorizer
 import json
-
-nltk.download("punkt")
-nltk.download('punkt_tab')
-nltk.download("stopwords")
-nltk.download("wordnet")
 
 
 def preprocess(dataset, size="small", max_doc_freq=0.9):
@@ -38,26 +30,21 @@ def preprocess(dataset, size="small", max_doc_freq=0.9):
 
 
 def preprocess_documents(documents):
-    stop_words = set(stopwords.words("english"))
-    lemmatizer = WordNetLemmatizer()
-
+    nlp = spacy.load("en_core_web_sm")
+    
     processed_docs = []
 
     for doc in documents:
-        # lowercase
-        doc = doc.lower()
 
-        # remove punctuation / special characters
+        doc = doc.lower()
         doc = re.sub(r"[^a-z\s]", " ", doc)
 
-        # tokenize
-        tokens = word_tokenize(doc)
+        spacy_doc = nlp(doc)
 
-        # remove stopwords + lemmatize
         tokens = [
-            lemmatizer.lemmatize(token)
-            for token in tokens
-            if token not in stop_words
+            token.lemma_
+            for token in spacy_doc
+            if not token.is_stop and token.is_alpha
         ]
 
         processed_docs.append(" ".join(tokens))
