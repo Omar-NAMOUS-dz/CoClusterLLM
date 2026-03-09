@@ -12,8 +12,6 @@ nltk.download('punkt_tab')
 nltk.download("stopwords")
 nltk.download("wordnet")
 
-stop_words = set(stopwords.words("english"))
-lemmatizer = WordNetLemmatizer()
 
 def preprocess(dataset, size="small", max_doc_freq=0.9):
     data = []
@@ -40,6 +38,9 @@ def preprocess(dataset, size="small", max_doc_freq=0.9):
 
 
 def preprocess_documents(documents):
+    stop_words = set(stopwords.words("english"))
+    lemmatizer = WordNetLemmatizer()
+
     processed_docs = []
 
     for doc in documents:
