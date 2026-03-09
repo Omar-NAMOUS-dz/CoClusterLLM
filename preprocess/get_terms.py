@@ -4,6 +4,7 @@ import spacy
 from sklearn.feature_extraction.text import CountVectorizer
 import json
 
+nlp = spacy.load("en_core_web_sm")
 
 def preprocess(dataset, size="small", max_doc_freq=0.9):
     data = []
@@ -30,8 +31,7 @@ def preprocess(dataset, size="small", max_doc_freq=0.9):
 
 
 def preprocess_documents(documents):
-    nlp = spacy.load("en_core_web_sm")
-    
+
     processed_docs = []
 
     for doc in documents:
