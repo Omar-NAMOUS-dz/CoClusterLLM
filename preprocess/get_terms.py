@@ -77,5 +77,5 @@ if __name__ == "__main__":
     parser.add_argument("--max_doc_freq", default=0.9, type=float)
     args = parser.parse_args()
 
-    preprocess(args)
+    preprocess(args.dataset, args.size, args.max_doc_freq)
 
