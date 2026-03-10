@@ -6,8 +6,8 @@ do
             --model_name hkunlp/instructor-large \
             --scale $scale \
             --task_name $dataset \
-            --data_path ../../datasets/${dataset}/${scale}_terms.jsonl \
-            --result_file ../../datasets/${dataset}/${scale}_embeds_terms.hdf5 \
+            --data_path ./datasets/${dataset}/${scale}_terms.jsonl \
+            --result_file ./datasets/${dataset}/${scale}_embeds_terms.hdf5 \
             --measure
     done
 done
