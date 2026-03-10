@@ -13,13 +13,11 @@ def preprocess(dataset, size="small", max_doc_freq=0.9):
         for line in f:
             data.append(json.loads(line))
 
-    print(data[0])
 
     documents = [document["input"] for document in data]
     processed_docs = preprocess_documents(documents)
     terms = extract_terms(processed_docs, max_doc_freq=max_doc_freq)
 
-    print(terms)
 
     terms_jsonl = [{"task": dataset, "input": t, "label": ""} for t in terms]
 
