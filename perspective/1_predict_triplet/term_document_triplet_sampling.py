@@ -80,7 +80,7 @@ def generate(args):
     while len(triplets) < args.max_query:
         # sample 1 term and 2 documents
         term_cluster = 0
-        cluster1, cluster2 = random.sample(range(len(n_clusters_docs)), 2)
+        cluster1, cluster2 = random.sample(range(n_clusters_docs), 2)
         idx = random.choice(class_member_inds_terms[term_cluster])
         choice1 = random.choice(class_member_inds_docs[cluster1])
         choice2 = random.choice(class_member_inds_docs[cluster2])
@@ -107,7 +107,7 @@ def generate(args):
     while len(triplets) < 2 * args.max_query:
         # sample 1 document and 2 terms
         docs_cluster = 0
-        cluster1, cluster2 = random.sample(range(len(n_clusters_terms)), 2)
+        cluster1, cluster2 = random.sample(range(n_clusters_terms), 2)
         idx = random.choice(class_member_inds_docs[docs_cluster])
         choice1 = random.choice(class_member_inds_terms[cluster1])
         choice2 = random.choice(class_member_inds_terms[cluster2])
