@@ -8,7 +8,7 @@ do
         do
             terms_feat_path=./datasets/${dataset}/${scale}_embeds_terms.hdf5
             docs_feat_path=./datasets/${dataset}/${scale}_embeds.hdf5
-            python term_document_triplet_sampling.py \
+            python ./perspective/1_perspective/term_document_triplet_sampling.py \
                 --terms_path ./datasets/${dataset}/${scale}.jsonl \
                 --docs_path ./datasets/${dataset}/${scale}.jsonl \
                 --terms_feat_path $terms_feat_path \
