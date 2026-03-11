@@ -104,7 +104,8 @@ def generate(args):
             "choice2_idx": int(trip[1]),
         })
 
-    while len(triplets) < 2 * args.max_query:
+    triplets = []
+    while len(triplets) < args.max_query:
         # sample 1 document and 2 terms
         docs_cluster = 0
         cluster1, cluster2 = random.sample(range(n_clusters_terms), 2)
@@ -114,7 +115,7 @@ def generate(args):
         if (idx, choice1, choice2) not in triplets \
             and choice1 != choice2:
             triplets.append((idx, choice1, choice2))
-            if len(triplets) >= 2 * args.max_query:
+            if len(triplets) >= args.max_query:
                 break
         docs_cluster += 1
         if docs_cluster >= n_clusters_docs: docs_cluster = 0
